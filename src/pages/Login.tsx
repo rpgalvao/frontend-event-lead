@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // IMPORTANTE: Hook para navegação
 import { Lock, Mail, Loader2 } from "lucide-react";
+import { api } from "../services/api";
 
 interface LoginProps {
 	onLoginSuccess: () => void;
@@ -16,24 +17,32 @@ export function Login({ onLoginSuccess }: LoginProps) {
 	const handleLogin = async (event: React.FormEvent) => {
 		event.preventDefault();
 		setError("");
-
-		if (!email || !password) {
-			setError("Por favor, preencha todos os campos da @rpg Sistemas.");
-			return;
-		}
-
 		setIsLoading(true);
 
-		// Simulando a chamada de API
-		setTimeout(() => {
-			setIsLoading(false);
+		try {
+			// 1. Chamada real para o seu Controller de Session/Login
+			const response = await api.post("/auth/login", { email, password });
 
-			// 1. Muda o estado global no App.tsx para "true"
+			// 1. Pegamos o token e os dados do usuário do caminho correto
+			// No seu backend, o retorno do login deve enviar o objeto 'user' junto
+			const { token, user } = response.data.data;
+
+			localStorage.setItem("@rpg:token", token);
+
+			// 2. Salvamos o objeto completo (contendo name e role)
+			// Se o seu backend NÃO enviar o 'user' no login, você precisará buscar na rota /users/me
+			localStorage.setItem("@rpg:user", JSON.stringify(user));
+
 			onLoginSuccess();
-
-			// 2. MANDA O USUÁRIO PARA O DASHBOARD (Faltava isso!)
 			navigate("/dashboard");
-		}, 1500);
+		} catch (err: any) {
+			// Se o Node retornar 401 ou 400, cai aqui
+			setError(
+				err.response?.data?.message || "Erro ao conectar com a @rpg.",
+			);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (
