@@ -1,37 +1,40 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { Login } from "./pages/Login";
 import { Dashboard } from "./pages/Dashboard";
 import { useState } from "react";
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const navigate = useNavigate(); // Para usar no logout se necessário
+
+	const handleLogout = () => {
+		setIsLoggedIn(false);
+		navigate("/"); // Garante que a URL volta para a raiz ao sair
+	};
 
 	return (
 		<Routes>
-			{/* Rota de Login */}
 			<Route
 				path="/"
 				element={<Login onLoginSuccess={() => setIsLoggedIn(true)} />}
 			/>
 
-			{/* Rota do Dashboard (Protegida) */}
 			<Route
 				path="/dashboard"
 				element={
 					isLoggedIn ? (
-						<Dashboard onLogout={() => setIsLoggedIn(false)} />
+						<Dashboard onLogout={handleLogout} />
 					) : (
-						<Navigate to="/" />
+						<Navigate to="/" /> // Se não estiver logado, "expulsa" para o login
 					)
 				}
 			/>
 
-			{/* Rota 404 - Se o usuário digitar qualquer besteira na URL */}
 			<Route
 				path="*"
 				element={
 					<div className="text-white text-center mt-20">
-						Página não encontrada na @rpg!
+						Página não encontrada!
 					</div>
 				}
 			/>

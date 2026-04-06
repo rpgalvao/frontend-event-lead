@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // IMPORTANTE: Hook para navegação
 import { Lock, Mail, Loader2 } from "lucide-react";
 
 interface LoginProps {
@@ -6,6 +7,7 @@ interface LoginProps {
 }
 
 export function Login({ onLoginSuccess }: LoginProps) {
+	const navigate = useNavigate(); // Inicializa o navegador
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -22,10 +24,15 @@ export function Login({ onLoginSuccess }: LoginProps) {
 
 		setIsLoading(true);
 
-		// Simulando uma chamada de API de 1.5 segundos
+		// Simulando a chamada de API
 		setTimeout(() => {
 			setIsLoading(false);
+
+			// 1. Muda o estado global no App.tsx para "true"
 			onLoginSuccess();
+
+			// 2. MANDA O USUÁRIO PARA O DASHBOARD (Faltava isso!)
+			navigate("/dashboard");
 		}, 1500);
 	};
 
