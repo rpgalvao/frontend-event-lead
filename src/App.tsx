@@ -1,20 +1,23 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-// Importação das suas páginas
 import { Login } from "./pages/Login";
 import { Dashboard } from "./pages/Dashboard";
 import { NewEvent } from "./pages/NewEvent";
-import { EditEvent } from "./pages/EditEvent"; // Importação da nova página
+import { EditEvent } from "./pages/EditEvent";
+import { Products } from "./pages/Products";
+import { NewProduct } from "./pages/NewProduct";
+import { EditProduct } from "./pages/EditProduct";
+import { NewLead } from "./pages/NewLead";
+import { UploadCard } from "./pages/UploadCard";
+import { Leads } from "./pages/Leads";
+import { EditLead } from "./pages/EditLead";
 
 function App() {
-	// 1. Persistência: Verificamos se existe um token no navegador logo ao carregar
-	// O '!!' converte o valor (token ou null) em um booleano (true/false)
 	const [isLoggedIn, setIsLoggedIn] = useState(
 		() => !!localStorage.getItem("@rpg:token"),
 	);
 
-	// 2. Função de Logout: Limpa o storage e reseta o estado de login
 	const handleLogout = () => {
 		localStorage.clear();
 		setIsLoggedIn(false);
@@ -22,9 +25,6 @@ function App() {
 
 	return (
 		<Routes>
-			{/* RAIZ: Se já estiver logado (ex: após F5), pula direto para o Dashboard.
-        Caso contrário, mostra a tela de Login.
-      */}
 			<Route
 				path="/"
 				element={
@@ -36,9 +36,7 @@ function App() {
 				}
 			/>
 
-			{/* DASHBOARD: Rota principal. 
-        Se o usuário tentar acessar sem login, o Navigate o joga de volta para a raiz.
-      */}
+			{/* Eventos */}
 			<Route
 				path="/dashboard"
 				element={
@@ -49,19 +47,12 @@ function App() {
 					)
 				}
 			/>
-
-			{/* NOVO EVENTO: Acesso apenas para usuários logados (O backend validará se é ADMIN)
-			 */}
 			<Route
 				path="/new-event"
 				element={
 					isLoggedIn ? <NewEvent /> : <Navigate to="/" replace />
 				}
 			/>
-
-			{/* EDITAR EVENTO: Note o ':id' na URL. 
-        Isso permite que a página EditEvent saiba qual evento carregar do seu banco.
-      */}
 			<Route
 				path="/edit-event/:id"
 				element={
@@ -69,7 +60,48 @@ function App() {
 				}
 			/>
 
-			{/* Rota de segurança: Qualquer endereço inválido volta para o início */}
+			{/* Produtos */}
+			<Route
+				path="/products"
+				element={
+					isLoggedIn ? <Products /> : <Navigate to="/" replace />
+				}
+			/>
+			<Route
+				path="/new-product"
+				element={
+					isLoggedIn ? <NewProduct /> : <Navigate to="/" replace />
+				}
+			/>
+			<Route
+				path="/edit-product/:id"
+				element={
+					isLoggedIn ? <EditProduct /> : <Navigate to="/" replace />
+				}
+			/>
+
+			{/* Leads */}
+			<Route
+				path="/leads"
+				element={isLoggedIn ? <Leads /> : <Navigate to="/" replace />}
+			/>
+			<Route
+				path="/new-lead"
+				element={isLoggedIn ? <NewLead /> : <Navigate to="/" replace />}
+			/>
+			<Route
+				path="/upload-card/:id"
+				element={
+					isLoggedIn ? <UploadCard /> : <Navigate to="/" replace />
+				}
+			/>
+			<Route
+				path="/edit-lead/:id"
+				element={
+					isLoggedIn ? <EditLead /> : <Navigate to="/" replace />
+				}
+			/>
+
 			<Route path="*" element={<Navigate to="/" replace />} />
 		</Routes>
 	);
