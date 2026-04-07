@@ -3,15 +3,26 @@ import { useState } from "react";
 
 import { Login } from "./pages/Login";
 import { Dashboard } from "./pages/Dashboard";
+
+// Eventos
 import { NewEvent } from "./pages/NewEvent";
 import { EditEvent } from "./pages/EditEvent";
+
+// Produtos
 import { Products } from "./pages/Products";
 import { NewProduct } from "./pages/NewProduct";
 import { EditProduct } from "./pages/EditProduct";
-import { NewLead } from "./pages/NewLead";
-import { UploadCard } from "./pages/UploadCard";
+
+// Leads
 import { Leads } from "./pages/Leads";
+import { NewLead } from "./pages/NewLead";
 import { EditLead } from "./pages/EditLead";
+import { UploadCard } from "./pages/UploadCard";
+
+// Usuários (Equipe)
+import { Users } from "./pages/Users";
+import { NewUser } from "./pages/NewUser";
+import { EditUser } from "./pages/EditUser";
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(
@@ -36,7 +47,7 @@ function App() {
 				}
 			/>
 
-			{/* Eventos */}
+			{/* Áreas Protegidas */}
 			<Route
 				path="/dashboard"
 				element={
@@ -47,6 +58,8 @@ function App() {
 					)
 				}
 			/>
+
+			{/* Eventos */}
 			<Route
 				path="/new-event"
 				element={
@@ -90,15 +103,31 @@ function App() {
 				element={isLoggedIn ? <NewLead /> : <Navigate to="/" replace />}
 			/>
 			<Route
+				path="/edit-lead/:id"
+				element={
+					isLoggedIn ? <EditLead /> : <Navigate to="/" replace />
+				}
+			/>
+			<Route
 				path="/upload-card/:id"
 				element={
 					isLoggedIn ? <UploadCard /> : <Navigate to="/" replace />
 				}
 			/>
+
+			{/* Equipe (Gestão de Usuários) */}
 			<Route
-				path="/edit-lead/:id"
+				path="/users"
+				element={isLoggedIn ? <Users /> : <Navigate to="/" replace />}
+			/>
+			<Route
+				path="/new-user"
+				element={isLoggedIn ? <NewUser /> : <Navigate to="/" replace />}
+			/>
+			<Route
+				path="/edit-user/:id"
 				element={
-					isLoggedIn ? <EditLead /> : <Navigate to="/" replace />
+					isLoggedIn ? <EditUser /> : <Navigate to="/" replace />
 				}
 			/>
 
