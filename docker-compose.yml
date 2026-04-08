@@ -1,0 +1,19 @@
+services:
+    rpg-frontend:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: rpg-frontend
+        ports:
+            - "5173:5173"
+        volumes:
+            - .:/app
+            - /app/node_modules
+        environment:
+            - CHOKIDAR_USEPOOLING=true
+        networks:
+            - rpg-network
+
+networks:
+    rpg-network:
+        driver: bridge
