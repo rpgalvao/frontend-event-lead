@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# 🚀 EventLead Manager - Frontend | @rpg Sistemas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o braço de interface do ecossistema **EventLead**, desenvolvido pela **@rpg Sistemas**. Uma aplicação React de alta performance projetada para captura e gestão de leads em tempo real durante feiras e eventos corporativos.
 
-Currently, two official plugins are available:
+## ✨ Características do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Design Premium:** Interface moderna com estética "Dark Mode" e Glassmorphism.
+- **Gestão de Leads:** Visualização em formato de "Dossiê" com fotos de cartões de visita.
+- **Controle de Status:** Sistema de atualização rápida de status (Novo, Qualificado, Negociação, Arquivado).
+- **Mobile First:** Totalmente responsivo para tablets e smartphones.
 
-## React Compiler
+## 🛠️ Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React.js** (Vite) | **TypeScript** | **Tailwind CSS** | **Lucide React** | **Axios**
 
-## Expanding the ESLint configuration
+## 📦 Como Rodar o Projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Via Docker (Recomendado)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Se você estiver na pasta `/frontend`, utilize:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+docker-compose up -d
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+A aplicação estará disponível em: http://localhost:5173.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Manualmente
+Instale as dependências:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+## ⚙️ Configuração
+
+Certifique-se de configurar o arquivo .env na raiz da pasta frontend:
+
+```bash
+VITE_API_URL=http://localhost:3333
+```
+
+### Desenvolvido com ☕ e foco por Renato - @rpg Sistemas.
