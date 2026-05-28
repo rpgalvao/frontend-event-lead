@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
 	User,
-	Phone,
-	Mail,
-	Building2,
-	Map,
 	Camera,
 	ArrowLeft,
 	Loader2,

@@ -6,9 +6,7 @@ import {
 	Camera,
 	Loader2,
 	User,
-	Phone,
 	Mail,
-	Building,
 	MessageSquare,
 	CheckCircle,
 	RefreshCcw,
@@ -242,7 +240,7 @@ export function EditLead() {
 									Observações
 								</label>
 								<textarea
-									className="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 outline-none focus:border-blue-500 min-h-[120px] resize-none text-sm text-slate-300"
+									className="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 outline-none focus:border-blue-500 min-h-30 resize-none text-sm text-slate-300"
 									value={formData.observation}
 									onChange={(e) =>
 										setFormData({

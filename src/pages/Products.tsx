@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-	Package,
-	Plus,
-	Trash2,
-	Edit,
-	ArrowLeft,
-	Loader2,
-	Tag,
-} from "lucide-react";
+import { Plus, Trash2, Edit, ArrowLeft, Loader2, Tag } from "lucide-react";
 import { api } from "../services/api";
 
 interface Produto {

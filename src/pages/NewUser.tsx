@@ -1,14 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-	User,
-	Mail,
-	Lock,
-	ShieldCheck,
-	ArrowLeft,
-	Loader2,
-	Save,
-} from "lucide-react";
+import { ArrowLeft, Loader2, Save } from "lucide-react";
 import { api } from "../services/api";
 
 export function NewUser() {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Calendar, MapPin, ArrowLeft, Loader2, Save } from "lucide-react";
+import { MapPin, ArrowLeft, Loader2, Save } from "lucide-react";
 import { api } from "../services/api";
 
 export function EditEvent() {

@@ -14,7 +14,6 @@ import {
 	Trash2,
 	Tag,
 	MessageSquare,
-	RefreshCcw,
 } from "lucide-react";
 import { api } from "../services/api";
 

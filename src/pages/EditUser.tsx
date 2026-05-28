@@ -1,14 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-	User,
-	Mail,
-	Shield,
-	ArrowLeft,
-	Loader2,
-	Save,
-	Camera,
-} from "lucide-react";
+import { User, ArrowLeft, Loader2, Save, Camera } from "lucide-react";
 import { api } from "../services/api";
 
 export function EditUser() {

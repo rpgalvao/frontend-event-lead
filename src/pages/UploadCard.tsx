@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-	Camera,
-	ArrowLeft,
-	Loader2,
-	Upload,
-	Image as ImageIcon,
-} from "lucide-react";
+import { Camera, ArrowLeft, Loader2, Upload } from "lucide-react";
 import { api } from "../services/api";
 
 export function UploadCard() {
