@@ -46,4 +46,4 @@ Certifique-se de configurar o arquivo .env na raiz da pasta frontend:
 VITE_API_URL=http://localhost:3333
 ```
 
-### Desenvolvido com ☕ e foco por Renato - @rpg Sistemas.
+### Desenvolvido com ☕ e muito foco por Renato - @rpg Sistemas.
