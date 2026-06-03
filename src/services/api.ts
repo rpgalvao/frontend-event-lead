@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'http://localhost:3333',
+    // Tenta ler a nuvem primeiro. Se não achar, usa o local como reserva.
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3333',
 });
 
 // Interceptor: Antes de QUALQUER requisição, ele executa isso
